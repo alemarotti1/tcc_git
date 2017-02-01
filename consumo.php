@@ -1,3 +1,12 @@
+<?php 
+	require_once 'classes/colecaoProdutoEmBD.php';
+	$colecaoProduto = new colecaoProdutoEmBD();
+	$produtos = $colecaoProduto->selecionarTudo();
+	
+	
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,7 +16,23 @@
 		
 	</head>
 	
-	<body><?php include 'menu.php';?>
+	<body>
+	<script>
+		var text = '{"produtos":[<?php 
+			foreach ($produtos as $token=>$tipo)
+			{
+				if(isset($produtos[$token+1])){
+					echo "{\"id\":\"{$tipo->getID()}\", \"nome\":\"{$tipo->getNome()}\", \"valor\":\"{$tipo->getPreco()}\"},";
+				}else {
+					echo "{\"id\":\"{$tipo->getID()}\", \"nome\":\"{$tipo->getNome()}\", \"valor\":\"{$tipo->getPreco()}\"}";
+				}
+			}
+		?>]}';
+
+		produtos = JSON.parse(text);
+		listaConsumo = {"consumo":[]};
+	</script>
+		<?php include 'menu.php';?>
 		<div id="containerPrincipal" >
 			<br>
 			
@@ -22,7 +47,16 @@
 					
 					<form>
 						<tr>
-							<th><input type="text" class="form-control" id="produto"></th>
+							<th>
+								<select class="form-control" id="consumo" name="consumo">
+				        			<option>Produto</option>
+				        			<?php //adiciona os tipos de quarto baseado no banco de dados
+										foreach ($produtos as $produto){
+											echo '<option value="'.$produto->getId().'">'.$produto->getNome().'</option>';
+										}
+									?>
+				      			</select>
+	      					</th>
 							<th><input type="number" class="form-control" id="quantidade"></th>
 							<th><input type="text" class="form-control" id="valor" placeholder="Valor"></th>
 							<th style="width: 5%;"><button type="button" class="btn btn-primary" id="add">+</button></th>

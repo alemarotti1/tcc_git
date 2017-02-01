@@ -1,15 +1,18 @@
 <?php
 	require_once'classes/produto.php';
-	require_once 'colecaoProduto.php';
+	require_once 'classes/colecaoProduto.php';
 	class colecaoProdutoEmBD implements colecaoProduto {
-		public $pdo;
+		private $dsn = "mysql:host=127.0.0.1;dbname=admhotel;";
+		private $username = "root";
+		private $password = "";
+		private  $pdo;
 		
 		function __construct(){
 			try{
-				$this->pdo = new PDO('mysql:host=127.0.0.1;dbname= admhotel', 'root', "");
+				$this->pdo = new PDO($this->dsn, $this->username, $this->password);
 				$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}catch(PDOException $e){
-				die($e->getMessage());
+				die('<script>alert("falha ao acessar o banco de dados. Tente novamente");</script>');
 			}
 		}
 		
@@ -29,7 +32,7 @@
 			$ps->execute(array($produto->getNome(),$produto->getPreco(),$produto->getID()));
 		}
 		
-		public function selecionar($id){
+		public function selecionarID($id){
 			$ps = $this->pdo->prepare('SELECT * FROM produto WHERE  id=?');
 			$ps->execute(array($parametro));
 			$objetos = array();
@@ -41,7 +44,7 @@
 			return $objetos;
 		}
 		
-		public function selecionar($nome){
+		public function selecionarNome($nome){
 			$ps = $this->pdo->prepare('SELECT * FROM produto WHERE  nome = LIKE ?');
 			$ps->execute(array('%'.$nome.'%'));
 			$objetos = array();
@@ -58,7 +61,7 @@
 			$ps->execute();
 			$objetos = array();
 			foreach ( $ps as $linha ) {
-				$obj = new Produto($linha[ 'id' ], $linha[ 'nome' ], $linha[ 'preco' ] );
+				$obj = new Produto($linha[ 'id' ], $linha[ 'nome' ], $linha[ 'precoPadrao' ] );
 				$objetos []= $obj;
 			}
 			return $objetos;
