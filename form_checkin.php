@@ -18,7 +18,7 @@
 			<div class="row" style="margin: auto;">
 				<div class="col-md-5">
 					<p class="tituloAgenda">Quartos Disponíveis</p>
-					<select class="form-control" id="tipoQuarto" name="tipoQuarto">
+					<select class="form-control" id="produto" name="produto">
 	        			<option>Tipo de Quarto</option>
 	        			<?php //adiciona os tipos de quarto baseado no banco de dados
 							foreach ($arrayTipo as $tipo){

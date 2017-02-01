@@ -7,7 +7,7 @@
 		function __construct($id = 0 , $nome = '', $preco = ''){
 			$this->id = $id;
 			$this->nome = $nome;
-			$this->cpf = $cpf;
+			$this->preco = $preco;
 		}
 		
 		
