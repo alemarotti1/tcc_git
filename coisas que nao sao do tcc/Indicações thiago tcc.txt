@@ -1,0 +1,15 @@
+colocar os campos que não são necessários para calculo como Char/VARCHAR
+Padronizar o nome dos campos e tabelas
+analisar se profissão deve virar tabela.
+padronizar o nome dos IDs e campos com a palavra "de"
+colocar informaçoes adicionais para o usuario
+ver se é necessários colocar campo de funcionarios(projetos futuros)
+verificar se existe os padrões de atualização/exclusão(on update/on delete cascade/set null etc...)
+separar date e time na tabela hospedagem na coluna data_entrada
+
+adicionar informaçoes como cofre e placa do carro(trabalho futuros)
+
+
+
+________________________________________________________________________________
+adicionar email a pagina de check-in

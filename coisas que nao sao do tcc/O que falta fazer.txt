@@ -1,0 +1,47 @@
+
+
+paginas(em ordem de importancia -  os primeiros são os mais importantes):
+
+-Check-out
+	**-colocar um botão pesquisar ao lado do <select> referente aos quartos ocupados, que terá a função de carregar os dados do hospede e do consumo - Catarina
+	-adicionar um select que mostrará os metodos de pagamento os quais o hotel aceita(cartão de credito, debito e dinheiro) - Catarina
+
+-fazer reserva
+	*-colocar quantos digitos faltam pra acabar o espaço ao lado de observações na pagina fazer reserva 
+	*-implementar o botão confirmar da pagina fazer reserva
+	*-validação dos dados via javascrip ao apertar o botão confirmar na pagina fazer reserva
+
+-listar hospede
+	*-implementar as funcionalidades
+
+-listar quarto
+	-implementar as funcionalidades
+
+-listar reserva
+	-a pagina inteira
+		-layout
+		*-calendário com opção de pesquisa por data
+		*-calendario com opção de segunda data opcional(caso esteja selecionada, as diarias exibidas serão da primeira data até a segunda)
+		*-implementação do botão pesquisar via javascript com validação dos dados
+		-listagem das reservas
+		
+
+-pagina inicial
+	-endireitar a formatação da tabela de quartos ocupados e de quartos livres, para que os dois fiquem um em baixo do outro ao diminuir a tela
+	-colocar um botão alugar quarto em cada box na tela inicial
+	
+
+
+
+
+
+
+
+	
+
+	
+
+ 
+
+
+
