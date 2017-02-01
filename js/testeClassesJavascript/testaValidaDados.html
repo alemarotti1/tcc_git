@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		
+	</head>
+	
+	<body>
+		<button id="confirmar" name="confirmar">
+		<button id="pesquisar" name="pesquisar">
+	</body>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	    <script src="../../bootstrap377/js/bootstrap.min.js"></script>
+		<script src="../jquery.mask.js"> </script>
+		<script src="../datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+		
+	
+	<script src="../formulario_checkin.js"></script>
+	<script src="../formulario.js" ></script>
+	<script src="../ValidarEEnviarCheckIn.js" ></script>
+	
+	<script src="../validaDados.js"></script>
+	
+	
+	
+	<script>
+		function exibeMensagem(cor, objeto, resultado){
+			$("body").append("<b style='color:"+cor+";'>"+objeto+" "+resultado+"</b>");
+			$("body").append("<br>");
+		}
+	</script>
+	
+	<script>
+		$("document").ready(function(){
+			if((validarData("29/02/2016"))){
+				exibeMensagem("green", "dataValida", "funcionando");
+			}else{
+				exibeMensagem("red", "dataValida", "não está funcionando");
+			}
+			if(!(validarData("32/02/2017"))){
+				exibeMensagem("green", "dataInvalida", "funcionando");
+			}else{
+				exibeMensagem("red", "dataInvalida", "não está funcionando");
+			}
+			
+			if((validarData("29/02/2016"))){
+				exibeMensagem("green", "Ano Bissesto valido", "funcionando");
+			}else{
+				exibeMensagem("red", "Ano Bissesto valido", "não está funcionando");
+			}
+			
+			if(!(validarData("29/02/2017"))){
+				exibeMensagem("green", "Ano Bissesto invalido", "funcionando");
+			}else{
+				exibeMensagem("red", "Ano Bissesto invalido", "não está funcionando");
+			}
+			exibeMensagem("green", "__________________________", "");
+			
+			if(validarCPF("89963032753")){
+				exibeMensagem("green", "cpf Valido", "funcionando");
+			}else{
+				exibeMensagem("red", "cpf Valido", "não está funcionando");
+			}
+			
+			if(!(validarCPF("9999999999"))){
+				exibeMensagem("green", "cpf invalido", "funcionando");
+			}else{
+				exibeMensagem("red", "cpf invalido", "não está funcionando");
+			}
+			
+			if(!(validarCPF("99999999999999999999999"))){
+				exibeMensagem("green", "cpf quantidade invalida de numeros", "funcionando");
+			}else{
+				exibeMensagem("red", "cpf quantidade invalida de numeros", "não está funcionando");
+			}
+			
+			if(!(validarCPF("9999999999999999999999999999"))){
+				exibeMensagem("green", "cpf quantidade invalida de numeros", "funcionando");
+			}else{
+				exibeMensagem("red", "cpf quantidade invalida de numeros", "não está funcionando");
+			}
+			exibeMensagem("green", "__________________________", "");
+			
+			if(validarHora("10:00")){
+				exibeMensagem("green", "Hora valida", "funcionando");
+			}else{
+				exibeMensagem("red", "Hora valida", "não está funcionando");
+			}
+			if(!(validarHora("24:59"))){
+				exibeMensagem("green", "Hora invalida", "funcionando");
+			}else{
+				exibeMensagem("red", "Hora invalida", "não estã funcionando");
+			}
+			if(!(validarHora("20:59:50"))){
+				exibeMensagem("green", "Hora quantidade invalida de numeros", "funcionando");
+			}else{
+				exibeMensagem("red", "Hora quantidade invalida de numeros", "não está funcionando");
+			}
+			exibeMensagem("green", "__________________________", "");
+			
+			if(validarProfissao("Engenheiro")){
+				exibeMensagem("green", "Profissao valida", "funcionando");
+			}else{
+				exibeMensagem("red", "Profissao valida", "não está funcionando");
+			}
+			if(!(validarProfissao("24:59"))){
+				exibeMensagem("green", "Profissao invalida", "funcionando");
+			}else{
+				exibeMensagem("red", "Profissao invalida", "não está funcionando");
+			}
+			if(!(validarProfissao("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))){
+				exibeMensagem("green", "Profissao quantidade invalida de numeros", "funcionando");
+			}else{
+				exibeMensagem("red", "Profissao quantidade invalida de numeros", "não está funcionando");
+			}
+			
+			
+			
+			exibeMensagem("green", "__________________________", "");
+			
+			var erros = validarDados("89963032753", "jão Marotti da fonseca Temporal", "gigolô", "japonês", "24/10/1999", "272174251", "28610005", "rua dos bobos número 0", "são gonçalo", "Pãrîña", "Brasil", "Maternidade", "cova", "negocios", "trem", "11/01/2017 15:13", "11/01/2017 15:13");
+			erros.forEach(function(item, index){
+				exibeMensagem("red", item, "");
+			});
+			
+		});
+	</script>
+</html>
