@@ -1,0 +1,7 @@
+-problemas ao gerar informações sobre os hóspedes, pois ha a complexidade ao possuir o registro manual
+
+- objetivo: extrair informações das bases para melhor tomada de decisão
+
+-formalização dos processos para uma informatização 
+
+- 
