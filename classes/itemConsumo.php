@@ -1,22 +1,15 @@
 <?php
-	class ItemProduto{
-		private $id;
+	class ItemConsumo{
 		private $nome;
 		private $quantidade;
 		
-		function __construct($id=0, $nome = '', $quantidade = ''){
-			$this->id = $id;
+		function __construct( $nome = '', $quantidade = ''){
 			$this->nome = $nome;
 			$this->quantidade = $quantidade;
 		}
 		
 
-		public function getID(){
-			return $this->id;
-		}
-		public function setID($id){
-			$this->id = $id;
-		}
+		
 		
 		public function getNome(){
 			return $this->nome;

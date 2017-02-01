@@ -91,7 +91,7 @@
 			$ps->execute();
 			$objetos = array();
 			foreach ( $ps as $linha ) {
-				$obj = new Quarto($linha[ 'id' ], $linha[ 'id_hotel' ], $linha[ 'numeroQuarto' ], $linha[ 'capacidade_de_pessoas' ], $linha[ 'numeroDeCamas' ], $linha[ 'precoPadrao' ], $linha[ 'estado' ], $linha[ 'id_tipo_quarto']);
+				$obj = new Quarto($linha[ 'id' ], $linha[ 'id_hotel' ], $linha[ 'numeroQuarto' ], $linha[ 'estado' ], $linha[ 'id_tipo_quarto']);
 				$objetos []= $obj;
 			}
 			return $objetos;

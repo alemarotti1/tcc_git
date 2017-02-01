@@ -1,6 +1,7 @@
 <?php
 	require_once'classes/gerarRelatorio.php';
 	require_once 'classes/itemProduto.php';
+	require_once 'classes/itemConsumo.php';
 	class GerarRelatorioProduto implements GerarRelatorio{	
 	public function gerarRelatorio(){
 		try{
@@ -11,25 +12,50 @@
 			die($e->getMessage());
 		}
 		
-		$ps = $pdo->prepare('SELECT id, nome,preco 
+		$ps = $pdo->prepare('SELECT  nome 
 						FROM  produto');
 		$ps->execute();
 		
 		$lista = array();
 		 foreach ($ps as $nomes){
-		 	$pdt = new Produto($nomes['id'], $nomes[ 'nome' ], $nomes[ 'quantidade' ] );
-		 	$lista [] = $pdt;
+		 	
+		 	$lista [] = $nomes;
 		 }
 		
-		 
-		 $ps = $pdo->prepare('SELECT   id_produto, quantidade
-						FROM  item_de_consumo INNERJOIN produto p');
-		 $ps->execute();
-		 
-		 $item = array();
-		 foreach ($ps as $quantidades){
-		 	$item [] = $nomes['nome'];
+		
+		 $valor=0;
+		 $array = array();
+		 $tamanho = count($lista);
+		 for ($i=1; $i<$tamanho; $i=$i+1){
+			 $ps = $pdo->prepare('SELECT  quantidade
+							FROM  item_de_consumo
+			 				WHERE id = ?');
+			 $ps->execute(array($i));
+			 $arrayProduto=array();
+			 foreach ($ps as $produtos){
+			 
+			 	$arrayProduto [] = $produtos;
+			 }
+			 $valor = array_sum($arrayProduto);
+			 
+			 foreach ($ps as $resultado ){
+			 	$array [] = $valor;
+			 }
 		 }
+		 
+		 
+		 $arrayFinal = array();
+		 for($i=1; $i<$tamanho; $i=$i+1){
+		 	$nome = $lista[];
+		 	$quantidade = $array[];
+		 	$itemConsumo = new ItemConsumo($nome,$quantidade);
+		 	$arrayFinal[] = $itemConsumo;
+		 }
+		 
+
+		 
+		 
+		 
 		 
 		
 		$ps = $pdo->prepare('SELECT produto.id, produto.nome, item_de_consumo.quantidade
@@ -61,6 +87,8 @@
 		
 		
 		
+		
+		
 		echo' <table border=2>';
 		
 		echo"<tr>	
@@ -68,8 +96,7 @@
 				<th>Quantidade</th>
 				<th>Porcentagem</th>
 			</tr>";
-		
-		foreach($lista as $produtos){
+		foreach($arrayFinal as $produtos){
 			echo'<tr>',
 					'<td>',$produtos->getNome(),'</td>',
 					'<td>',$produtos->getQuantidade(),'</td>';
@@ -83,3 +110,4 @@
 	}
 }
 ?>
+

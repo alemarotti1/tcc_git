@@ -46,7 +46,21 @@
 			return $tipoQuartos;
 		}
 		
-		
+		public function getIdQuarto($id){
+			$tipoQuartos = array();
+				$ps = $this->pdo->prepare('SELECT * FROM tipo_quarto INNERJOIN quarto 
+						ON quarto.id_tipoQuarto =tipo_quarto.id
+						WHERE id_tipo_quarto = ?');
+				$ps->execute(array($id));
+				$objetos = array();
+				foreach ( $ps as $linha ) {
+					$obj = new TipoQuarto($linha[ 'id' ], $linha[ 'nome' ], $linha[ 'numero_de_camas' ], $linha[ 'capacidade_de_pessoas' ], $linha[ 'valor_padrao']);
+				$objetos []= $obj;
+				}
+				return $objetos;
+				
+				
+		}
 		
 		
 	}

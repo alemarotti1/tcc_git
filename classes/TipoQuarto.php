@@ -5,6 +5,14 @@
 		private $qtdCamas;
 		private $valor;
 		private $qtdMaxPessoas;
+		function __construct($id, $nome, $qtdCamas, $valor, $qtdMaxPessoas){
+			$this->id = $id;
+			$this->nome = $nome;
+			$this->qtdCamas = $qtdCamas;
+			$this->valor = $valor;
+			$this->qtdMaxPessoas = $qtdMaxPessoas;
+				
+		}
 		
 		//--------------------------------------------funcões do id-------------------------------------------------
 		public function getId(){
