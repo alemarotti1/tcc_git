@@ -17,7 +17,7 @@
 		}
 		
 		public function listarTodas(){
-			$ps = $this->pdo->prepare('SELECT * FROM reservas WHERE 1');
+			$ps = $this->pdo->prepare('SELECT * FROM reservas r INNER JOIN hospede h ON r.id_hospede = h.id  WHERE 1');
 			$ps->execute();
 			$objetos = array();
 			foreach ( $ps as $linha ) {

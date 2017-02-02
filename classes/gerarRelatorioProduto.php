@@ -12,50 +12,6 @@
 			die($e->getMessage());
 		}
 		
-		$ps = $pdo->prepare('SELECT  nome 
-						FROM  produto');
-		$ps->execute();
-		
-		$lista = array();
-		 foreach ($ps as $nomes){
-		 	
-		 	$lista [] = $nomes;
-		 }
-		
-		
-		 $valor=0;
-		 $array = array();
-		 $tamanho = count($lista);
-		 for ($i=1; $i<$tamanho; $i=$i+1){
-			 $ps = $pdo->prepare('SELECT  quantidade
-							FROM  item_de_consumo
-			 				WHERE id = ?');
-			 $ps->execute(array($i));
-			 $arrayProduto=array();
-			 foreach ($ps as $produtos){
-			 
-			 	$arrayProduto [] = $produtos;
-			 }
-			 $valor = array_sum($arrayProduto);
-			 
-			 foreach ($ps as $resultado ){
-			 	$array [] = $valor;
-			 }
-		 }
-		 
-		 
-		 $arrayFinal = array();
-		 for($i=1; $i<$tamanho; $i=$i+1){
-		 	$nome = $lista[];
-		 	$quantidade = $array[];
-		 	$itemConsumo = new ItemConsumo($nome,$quantidade);
-		 	$arrayFinal[] = $itemConsumo;
-		 }
-		 
-
-		 
-		 
-		 
 		 
 		
 		$ps = $pdo->prepare('SELECT produto.id, produto.nome, item_de_consumo.quantidade
@@ -96,7 +52,7 @@
 				<th>Quantidade</th>
 				<th>Porcentagem</th>
 			</tr>";
-		foreach($arrayFinal as $produtos){
+		foreach($objetos as $produtos){
 			echo'<tr>',
 					'<td>',$produtos->getNome(),'</td>',
 					'<td>',$produtos->getQuantidade(),'</td>';

@@ -4,17 +4,17 @@
 		private $nome;
 		private $quantidade;
 		
-		function __construct($id=0, $nome = '', $quantidade = ''){
+		function __construct($id = 0 , $nome = '', $quantidade = ''){
 			$this->id = $id;
 			$this->nome = $nome;
 			$this->quantidade = $quantidade;
 		}
 		
-
-		public function getID(){
+		
+		public function getId(){
 			return $this->id;
 		}
-		public function setID($id){
+		public function setId($id){
 			$this->id = $id;
 		}
 		

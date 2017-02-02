@@ -24,43 +24,32 @@
 					$tipoQuarto = new TipoQuarto();
 					$tipoQuarto->setId($tipo['id']);
 					$tipoQuarto->setNome($tipo['nome']);
-					$tipoQuarto->setQtdCamas($tipo['numero_de_camas']);
-					$tipoQuarto->setQtdMaxPessoas($tipo['capacidade_de_pessoas']);
-					$tipoQuarto->setValor($tipo['valor_padrao']);
-					
+					$tipoQuarto->setQtdCamas($tipo['qtdCamas']);
+					$tipoQuarto->setQtdMaxPessoas($tipo['valor']);
+					$tipoQuarto->setValor($tipo['qtdMaxPessoas']);
+						
 					array_push($tipoQuartos, $tipoQuarto);
 				}
 				return $tipoQuartos;
 		}
-		public function byId(){
+		public function byId($id){
 			$tipoQuartos = array();
+			
 			$ps = $this->pdo->prepare('SELECT * FROM `tipo_quarto` where id=?');
-			$ps->execute();
+			$ps->execute(array($id));
 			foreach ($ps as $tipo){
-				$tipoQuarto = new TipoQuarto();
-				$tipoQuarto->setId($tipo['id']);
-				$tipoQuarto->setNome($tipo['nome']);
+				$obj = new TipoQuarto($tipo['id'],$tipo['nome'],$tipo['valor_padrao'],
+						$tipo['numero_de_camas'],$tipo['capacidade_de_pessoas']);
+				
+					$tipoQuartos[] =$obj;
 					
-				array_push($tipoQuartos, $tipoQuarto);
+		
 			}
 			return $tipoQuartos;
 		}
 		
-		public function getIdQuarto($id){
-			$tipoQuartos = array();
-				$ps = $this->pdo->prepare('SELECT * FROM tipo_quarto INNERJOIN quarto 
-						ON quarto.id_tipoQuarto =tipo_quarto.id
-						WHERE id_tipo_quarto = ?');
-				$ps->execute(array($id));
-				$objetos = array();
-				foreach ( $ps as $linha ) {
-					$obj = new TipoQuarto($linha[ 'id' ], $linha[ 'nome' ], $linha[ 'numero_de_camas' ], $linha[ 'capacidade_de_pessoas' ], $linha[ 'valor_padrao']);
-				$objetos []= $obj;
-				}
-				return $objetos;
-				
-				
-		}
+		
+		
 		
 		
 	}

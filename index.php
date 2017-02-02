@@ -32,15 +32,19 @@
 						$estado = 'livre' ;
 						$listaQuartoDisponivel=$acessoAoBanco->getEstadoQuartoPorNome($estado);
 						foreach ($listaQuartoDisponivel as $quartoDisponivel){
-							
-						?>
+							$idQuarto = $quartoDisponivel->getIdTipoQuarto();
+							$tipoQuarto = new ColecaoTipoQuartoEmBD();
+							$tipoQuart=$tipoQuarto->byId($idQuarto);
+							foreach ($tipoQuart as $q){
+							?>
 							<table style="border: 2px solid black; background-color: white;">
 								<tr><td><?php echo $quartoDisponivel->getNumeroQuarto();?></td></tr>
-								<?php $listarTipoQuarto = $acesso->getIdQuarto($quartoDisponivel->getTipoQuarto());
-							foreach ($listarTipoQuarto as $tipoQuartoDisponivel){?>
-								<<tr><td>Numero de camas:<?php echo $tipoQuartoDisponivel->getQtdCamas();?></td></tr>
-								<tr><td>Capacidade De Pessoas :<?php echo $tipoQuartoDisponivel->getQtdMaxPessoas();?></td></tr>
-								<tr><td><br><br>Valor padrão: <?php echo $tipoQuartoDisponivel->getValor();?></td></tr>
+								
+								<tr><td>Numero de camas:<?php echo $q->getQtdCamas();?></td></tr>
+								
+								<tr><td>Capacidade De Pessoas :<?php echo $q->getQtdMaxPessoas();?></td></tr>
+								<tr><td><br><br>Valor padrão: <?php echo $q->getValor();?></td></tr>
+								
 								<tr><td><a href="checkin.php" class="btn btn-success btn-block" >Alugar</a>	</td></tr>
 								
 							</table>
@@ -57,17 +61,17 @@
 						$estado = 'ocupado' ;
 						$listaQuartoOcupado=$acessoAoBanco->getEstadoQuartoPorNome($estado);
 						foreach ($listaQuartoOcupado as $quartoOcupado){
-							
+							$idOcupado = $quartoOcupado->getIdTipoQuarto();
+							$tipoOcupado = new ColecaoTipoQuartoEmBD();
+							$tipoQuartOcupado=$tipoOcupado->byId($idOcupado);
+							foreach ($tipoQuartOcupado as $qOcupado){
 						?>
 							<table style="border: 2px solid black; background-color: white;">
 								<tr><td><?php echo $quartoOcupado->getNumeroQuarto();?></td></tr>
-								<?php $ocupado = $quartoOcupado->getTipoQuarto();
-										$listarTipoQuarto = $acesso->getIdQuarto($ocupado);
-										foreach ($listarTipoQuarto as $tipoQuartoOcupado){
-								?>
-								<tr><td>Numero de camas:<?php echo $tipoQuartoOcupado->getQtdCamas();?></td></tr>
-								<tr><td>Capacidade De Pessoas :<?php echo $tipoQuartoOcupado->getQtdMaxPessoas();?></td></tr>
-								<tr><td><br><br>Valor padrão: <?php echo $tipoQuartoOcupado->getValor();?></td></tr>
+								
+								<tr><td>Numero de camas:<?php echo $qOcupado->getQtdCamas();?></td></tr>
+								<tr><td>Capacidade De Pessoas :<?php echo $qOcupado->getQtdMaxPessoas();?></td></tr>
+								<tr><td><br><br>Valor padrão: <?php echo $qOcupado->getValor();?></td></tr>
 							</table>
 							<br>
 						<?php }}

@@ -2,14 +2,15 @@
 	class TipoQuarto{
 		private $id;
 		private $nome;
-		private $qtdCamas;
 		private $valor;
+		private $qtdCamas;	
 		private $qtdMaxPessoas;
-		function __construct($id, $nome, $qtdCamas, $valor, $qtdMaxPessoas){
+		
+		public function __construct($id=0, $nome='',$valor='', $qtdCamas='',  $qtdMaxPessoas=''){
 			$this->id = $id;
 			$this->nome = $nome;
-			$this->qtdCamas = $qtdCamas;
 			$this->valor = $valor;
+			$this->qtdCamas = $qtdCamas;
 			$this->qtdMaxPessoas = $qtdMaxPessoas;
 				
 		}

@@ -4,7 +4,7 @@
 		private $idHotel;
 		private $numeroQuarto;
 		private $estadoDoQuarto;
-		private $tipoQuarto;
+		private $idtipoQuarto;
 		
 		function __construct($id, $idHotel, $numeroQuarto, $estadoDoQuarto, $idTipoQuarto){
 			$this->id = $id;
@@ -47,11 +47,11 @@
 			$this->estadoDoQuarto = $estadoDoQuarto;
 		}
 		
-		public function getTipoQuarto(){
+		public function getIdTipoQuarto(){
 			return $this->tipoQuarto;
 		}
 		
-		public function setTipoQuarto($tipoQuarto){
+		public function setIdTipoQuarto($tipoQuarto){
 			$this->tipoQuarto = $tipoQuarto;
 		}
 	}

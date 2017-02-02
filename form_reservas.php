@@ -2,7 +2,7 @@
 	<div class="reservas">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<form action="reservas.php" method="POST">
+				<form action="salvarReserva.php" method="POST">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<span class="help-block text-muted small-font">Telefone</span>
@@ -42,13 +42,13 @@
 					<div class="row">
 						<div class="col-md-12 pad-adjust">
 							<span class="help-block text-muted small-font" style="float: left;">Nome:</span>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" id ="nome" name ="nome">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 pad-adjust">
 							<span class="help-block text-muted small-font" style="float: left;">Observações:</span>
-							<textarea rows="5" cols="52" class="form-control"></textarea>
+							<textarea rows="5" cols="52" class="form-control" id="observacoes" name ="observacoes"></textarea>
 						</div>
 					</div>
 					<br>
