@@ -2,7 +2,7 @@
 	<div class="reservas">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<form action="salvarReserva.php" method="POST">
+				<form action="reservas.php" method="POST">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<span class="help-block text-muted small-font">Telefone</span>

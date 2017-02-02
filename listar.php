@@ -49,6 +49,9 @@ require_once 'classes/reservaPessoa.php';
 				<th>Data de Chegada</th>
 				<th>Data Prevista de Saida</th>
 				<th>Tipo de Quarto</th>
+				<th>Confirmar</th>		
+				<th>Excluir</th>
+				<th>Tipo de Quarto</th>
 			</tr>";
 	foreach($objetos as $reservas){
 		echo'<tr>',
@@ -56,6 +59,8 @@ require_once 'classes/reservaPessoa.php';
 		'<td>',$reservas->getdataChegada(),'</td>',
 		'<td>',$reservas->getDataPrevistaSaida(),'</td>',
 		'<td>',$reservas->getNomeQuarto(),'</td>',
+		'<td>',,'</td>',
+		'<td>',,'</td>',
 		'</tr>'	;
 	}
 		
