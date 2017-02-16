@@ -6,6 +6,7 @@
 		private $data_prevista_saida;
 		private $id_tipo_quarto;
 		
+		
 		function __construct($id, $id_hospede, $data_chegada, $data_prevista_saida, $id_tipo_quarto){
 			$this->id = $id;
 			$this->id_hospede = $id_hospede;
