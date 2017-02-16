@@ -1,8 +1,8 @@
 <?php
 	require_once'classes/gerarRelatorio.php';
 	require_once 'classes/perfilQuarto.php';
-	class GerarRelatorioPerfilDoHospede implements GerarRelatorio{			
-	public function gerarRelatorio(){
+	class RelatorioPerfilDoHospede implements GerarRelatorio{			
+	public function gerarRelatorio($dataInicio, $dataFim){
 		try{
 			$pdo = new PDO('mysql:host=127.0.0.1;dbname=banco','root','');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
