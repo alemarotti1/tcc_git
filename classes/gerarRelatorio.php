@@ -1,6 +1,6 @@
 <?php
 	interface GerarRelatorio{
-		public function GerarRelatorio();
+		public function GerarRelatorio($dataInicio, $dataFim);
 	}
 	
 ?>

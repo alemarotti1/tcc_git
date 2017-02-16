@@ -2,8 +2,8 @@
 	require_once'classes/gerarRelatorio.php';
 	require_once 'classes/itemProduto.php';
 	require_once 'classes/itemConsumo.php';
-	class GerarRelatorioProduto implements GerarRelatorio{	
-	public function gerarRelatorio(){
+	class RelatorioProduto implements GerarRelatorio{	
+	public function gerarRelatorio($dataInicio, $dataFim){
 		try{
 			$pdo = new PDO('mysql:host=127.0.0.1;dbname=admhotel','root','');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

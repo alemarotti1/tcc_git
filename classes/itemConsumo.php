@@ -2,10 +2,12 @@
 	class ItemConsumo{
 		private $nome;
 		private $quantidade;
+		private $data;
 		
-		function __construct( $nome = '', $quantidade = ''){
+		function __construct( $nome = '', $quantidade = '', $data=''){
 			$this->nome = $nome;
 			$this->quantidade = $quantidade;
+			$this->data = $data;
 		}
 		
 
@@ -23,6 +25,13 @@
 		}
 		public function setQuantidade($quantidade){
 			$this->quantidade = $quantidade;
+		}
+		
+		public function getData(){
+			return $this->data;
+		}
+		public function setData($data){
+			$this->data = $data;
 		}
 	}
 ?>
