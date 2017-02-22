@@ -9,7 +9,6 @@
 	
 	<body>
 		<?php include 'menu.php';?>
-		<script src="js/checkout.js"></script>
 		<div id="containerPrincipal" >
 			<br>
 			<div class="row" style="margin: auto;">

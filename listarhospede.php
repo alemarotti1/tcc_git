@@ -21,10 +21,6 @@
 	      			
 				</div>
 
-				<div class="col-md-3 col-sm-3 col-xs-3 pad-adjust">
-					<p class="tituloAgenda">&nbsp;</p>
-					<input type="submit" class="btn btn-success btn-block" value="confirmar">
-				</div>
 				</form>
 				<br>	
 			</div>			
@@ -35,9 +31,7 @@
 </html>
 
 <?php
-	require_once 'classes/Hospede.php';
-	require_once 'classes/colecaoHospedeEmBD.php';
-	if(isset($_POST['confirmar'])){
+	
 		$acessoAoBanco = new colecaoHospedeEmBD();
 		$opcao = htmlspecialchars($_POST['listarHospede']) ;
 		if($opcao == 'todos'){

@@ -21,7 +21,7 @@
 			$ps->execute();
 			$objetos = array();
 			foreach ( $ps as $linha ) {
-				$obj = new Reserva($linha[ 'id' ], $linha[ 'id_hospede' ], $linha[ '$data_cehgada' ], $linha[ 'data_prevista_saida' ], $linha[ 'id_tipo_quarto' ]);
+				$obj = new Reserva($linha[ 'id' ], $linha[ 'id_hospede' ], $linha[ '$data_chegada' ], $linha[ 'data_prevista_saida' ], $linha[ 'id_tipo_quarto' ]);
 				$objetos []= $obj;
 			}
 			return $objetos;

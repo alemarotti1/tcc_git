@@ -36,8 +36,7 @@
 			$objetos = array();
 			foreach ( $ps as $linha ) {
 				$obj = new Quarto($linha[ 'id' ], $linha[ 'id_hotel' ], $linha[ 'numeroQuarto' ], $linha[ 'estado' ], $linha[ 'id_tipo_quarto']);
-				echo(var_dump($obj));
-				//array_push(objetos , $obj);
+				$objetos[] = obj;
 			}
 			return $objetos;
 		}
@@ -48,7 +47,7 @@
 			$objetos = array();
 			foreach ( $ps as $linha ) {
 				$obj = new Quarto($linha[ 'id' ], $linha[ 'id_hotel' ], $linha[ 'numeroQuarto' ], $linha[ 'estado' ], $linha[ 'id_tipo_quarto']);
-				array_push($objetos, $obj);
+				$objetos[] = $obj;
 			
 			}
 			return $objetos;

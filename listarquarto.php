@@ -6,7 +6,6 @@
 	</head>
 	
 	<body><?php include 'menu.php';?>
-		<script src="js/listar_quarto.js"></script>
 		<div id="containerPrincipal" >
 			<br>
 			<div class="row" style="margin: auto;">
@@ -23,10 +22,7 @@
 		      			
 					</div>
 	
-					<div class="col-md-3 col-sm-3 col-xs-3 pad-adjust">
-						<p class="tituloAgenda">&nbsp;</p>
-						<input id="confirmar" name="confirmar" type="submit" class="btn btn-success btn-block" value="confirmar">
-					</div>
+					
 				</form>
 				<br>
 				<div id="dados"></div>	
@@ -36,3 +32,31 @@
 		<?php include 'bootstrapjs.php';?>
 	</body>
 </html>
+<?php
+		require_once 'classes/colecaoQuartoEmBD.php';
+		
+		$acessoAoBanco = new colecaoQuartoEmBD();
+		$estado = htmlspecialchars($_POST['estadoQuarto']) ;
+		
+		$pd = $acessoAoBanco->getAllQuartos(); 
+		
+		 if($estado == 'todos' ){
+			$pd = $acessoAoBanco->getAllQuartos();
+		}
+		else {
+			$pd = $acessoAoBanco->getEstadoQuartoPorNome($estado);
+		}
+		
+		echo "<table border=2>";
+		echo "<tr>
+					<th>Numero</th>
+					<th>Estado</th>
+					</tr>";
+		foreach($pd as $obj){
+			echo"<tr>";
+			echo '<tr>',
+			'<td>', $obj->getNumero(), '</td>',
+			'<td>', $obj->getEstado(), '</td>',
+			'</tr>';
+		}
+?>

@@ -21,10 +21,7 @@
 	      			
 				</div>
 
-				<div class="col-md-3 col-sm-3 col-xs-3 pad-adjust">
-					<p class="tituloAgenda">&nbsp;</p>
-					<input type="submit" class="btn btn-success btn-block" value="confirmar">
-				</div>
+				
 				</form>
 				<br>	
 			</div>			
@@ -35,13 +32,10 @@
 </html>
 
 <?php
-	require_once 'classes/reserva.php';
-	require_once 'classes/colecaoReservaEmBD.php';
-	if(isset($_POST['confirmar'])){
-		$acessoAoBanco = new colecaoHospedeEmBD();
+		$acessoAoBanco = new colecaoReservaEmBD();
 		$opçao = htmlspecialchars($_POST['listarReserva']) ;
 		if($opção == 'todos'){
-			$acessoAoBanco->listarTodos();
+			$acessoAoBanco->listarTodas();
 		}
 		else if($opçao == 'nome' ){
 			//opção pra informar o id
@@ -55,5 +49,5 @@
 			//opção pra informar o telefone
 			$acessoAoBanco->buscaPorTelefone($Telefone);
 		}
-	}
+	
 ?>
