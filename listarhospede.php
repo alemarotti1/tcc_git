@@ -38,7 +38,7 @@
 			$acessoAoBanco->listarTodos();
 		}
 		else if($opcao == 'hospedagem' ){
-			//opcao pra informar o id
+			echo'<input type="text" class="form-control" id="cidade" >';
 			$acessoAoBanco->listarPorHospedagem($idHospegagem);
 		}
 		else if($opcao == 'cpf' ){
@@ -49,5 +49,5 @@
 			//opcao pra informar o telefone
 			$acessoAoBanco->buscaPorTelefone($Telefone);
 		}
-	}
+	
 ?>
