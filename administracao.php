@@ -26,7 +26,8 @@
 					</div>
 					<div class="col-md-3 col-sm-3 col-xs-3 pad-adjust">
 					<p class="tituloAgenda">&nbsp;</p>
-					<input type="submit" class="btn btn-success btn-block" name="confirmar" id="confirmar" value="Confirmar">
+					<input type="submit" class="btn btn-success " name="confirmar" id="confirmar" value="Confirmar">
+					<input type="reset" class="btn btn-danger " value="CANCELAR">
 				</div>
 			<br>	
 			</div>	
