@@ -24,9 +24,9 @@
 					$tipoQuarto = new TipoQuarto();
 					$tipoQuarto->setId($tipo['id']);
 					$tipoQuarto->setNome($tipo['nome']);
-					$tipoQuarto->setQtdCamas($tipo['qtdCamas']);
-					$tipoQuarto->setQtdMaxPessoas($tipo['valor']);
-					$tipoQuarto->setValor($tipo['qtdMaxPessoas']);
+					$tipoQuarto->setQtdCamas($tipo['numero_de_camas']);
+					$tipoQuarto->setQtdMaxPessoas($tipo['valor_padrao']);
+					$tipoQuarto->setValor($tipo['capacidade_de_pessoas']);
 						
 					array_push($tipoQuartos, $tipoQuarto);
 				}
