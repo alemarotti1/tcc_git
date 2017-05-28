@@ -7,18 +7,21 @@
 		try{
 			$pdo = new PDO('mysql:host=127.0.0.1;dbname=admhotel','root','');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		}catch(PDOException $e){
-			throw PDOException;
-			die($e->getMessage());
-		}
 		
 		 
 		
-		$ps = $pdo->prepare('SELECT produto.id, produto.nome, item_de_consumo.quantidade
-						FROM item_de_consumo   
-						INNER JOIN produto  
-						ON item_de_consumo.id_produto = produto.id');
-		$ps->execute();
+			$ps = $pdo->prepare('SELECT p.id, p.nome, SUM(ic.quantidade) AS quantidade
+							FROM item_de_consumo  ic
+							LEFT JOIN produto p 
+							ON p.id = ic.id_produto
+							WHERE ic.data_compra >= ? AND ic.data_compra <= ? 
+							GROUP BY p.nome');
+			$ps->execute(array($dataInicio, $dataFim));
+			
+		
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}		
 		
 		$objetos = array();
 		foreach ( $ps as $linha ) {
@@ -66,4 +69,3 @@
 	}
 }
 ?>
-

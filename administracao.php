@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<?php include 'header.php';?>
@@ -11,7 +9,7 @@
 	</head>
 	
 	<body><?php include 'menu.php';?>
-	<form method="post" action="administracao.php" >
+	<form method="get" action="administracao.php" >
 		<div id="containerPrincipal" >
 			<br>
 			<div class="row" style="margin: auto;">
@@ -66,32 +64,62 @@
 			  lang:'pt'
 			});</script>
 		
-	</body>
+</body>
 </html>
+
 
 <?php 
 	require_once 'classes/RelatorioProduto.php';
 	require_once 'classes/RelatorioDeOcupacao.php';
-	require_once 'classes/RelatorioPerfilDoHospede';
+	require_once 'classes/RelatorioPerfilDoHospede.php';
 	
-	if(isset($_POST['confirmar'])){
+	
+	if(isset($_GET['confirmar'])){
 		$produto = new RelatorioProduto();
 		$ocupacao = new RelatorioDeOcupacao(); 
 		$perfil = new RelatorioPerfilDoHospede();
+		$tipoRelatorio = htmlspecialchars($_GET['tipoRelatorio']);
 		
-		$dataInicio = htmlspecialchars($_POST['dataInicio']);
-		$dataFim = htmlspecialchars($_POST['dataFim']);
-		$tipoRelatorio = htmlspecialchars($_POST['tipoRelatorio']);
+		$dataInicio = htmlspecialchars($_GET['dataInicio']);
+		$dataFim = htmlspecialchars($_GET['dataFim']);
 		
-		if($tipoRelatorio == 'relatorioProduto'){
+		
+		if($tipoRelatorio == 'relatorioProdutos'){	
+			$dataIni = explode( ' ', $dataInicio );
+			$dataIni = explode( '/', $dataIni[ 0 ] );
+			$dataIni = $dataIni[ 2 ] . '/' . $dataIni[ 1 ] . '/' . $dataIni[ 0 ];
+			
+			$fim = explode( ' ', $dataFim );
+			$fim = explode( '/', $fim[ 0 ] );
+			$fim = $fim[ 2 ] . '/' . $fim[ 1 ] . '/' . $fim[ 0 ];
+			
+			$dataInicio = ( new DateTime( $dataIni ) )->format( 'Y-m-d' );
+			$dataFim = ( new DateTime( $fim ) )->format( 'Y-m-d' );
 			$pd= $produto->gerarRelatorio($dataInicio, $dataFim);
 		}
 		
-		else if($tipoRelatorio == 'relatorioOcupacao'){
-			$pd = $ocupacao->gerarRelatorio($dataInicio, $dataFim);
-		}
-		else if($tipoRelatorio == 'relatorioPerfil'){
-			$pd = $perfil->gerarRelatorio($dataInicio, $dataFim);
+		else {
+			$dataIni = explode( ' ', $dataInicio );
+			$dataIni = explode( '/', $dataIni[ 0 ] );
+			$horaIni = $dataIni[1];
+			$dataIni = $dataIni[ 2 ] . '/' . $dataIni[ 1 ] . '/' . $dataIni[ 0 ];
+				
+			$fim = explode( ' ', $dataFim );
+			$fim = explode( '/', $fim[ 0 ] );
+			$fim = $fim[ 2 ] . '/' . $fim[ 1 ] . '/' . $fim[ 0 ] ;
+				
+			$dataInicio = ( new DateTime( $dataIni ) )->format( 'Y-m-d' );
+			$dataFim = ( new DateTime( $fim ) )->format( 'Y-m-d' );
+			
+			
+		
+			if($tipoRelatorio == 'relatorioOcupacao'){
+				$pd = $ocupacao->gerarRelatorio($dataInicio, $dataFim);
+			}
+			else if($tipoRelatorio == 'relatorioPerfil'){
+				$pd = $perfil->gerarRelatorio($dataInicio, $dataFim);
+			}
 		}
 	}
 ?>
+	

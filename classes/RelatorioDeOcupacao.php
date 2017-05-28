@@ -21,10 +21,12 @@
 		
 		
 		
-		$ps1 = $pdo->prepare('SELECT h.id,
-						FROM hospedagem h INNER JOIN quarto q ON h.id_quarto = q.id
-						WHERE h.data_entrada = ? , h.data_saida = ? AND q.estado = ?');
-		$ps1->execute(array($dataInicio, $dataFim,$estado));
+		$ps1 = $pdo->prepare('SELECT h.id
+						FROM hospedagem h 
+						LEFT JOIN quarto q 
+						ON q.id = h.id_quarto 
+						WHERE q.estado = ?, h.data_entrada >= ? AND h.data_saida <= ? ');
+		$ps1->execute(array($estado,$dataInicio, $dataFim));
 		
 		$quartosOcupados = count($ps1) ;
 		

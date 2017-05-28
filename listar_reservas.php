@@ -6,15 +6,31 @@
 	</head>
 	
 	<body><?php include 'menu.php';?>
+	
+		<script type="text/javascript">
+		function opcoes( valor ) {
+
+			alert( valor );
+			/*
+			if ( valor === "CPF" ) {
+				$( '#conteudo' ).load( 'listagem.php?ordem=cpf' );
+			}
+			*/
+
+			//$( '#conteudo' ).html( valor );
+			 
+		}
+		</script>
+	
 		<div id="containerPrincipal" >
 			<br>
 			<div class="row" style="margin: auto;">
 			<form id = 'reserva' name = 'reserva' method =' post' action = 'listarreserva.php'>
 				<div class="col-md-9 col-sm-9 col-xs-9">				
 					<p class="tituloAgenda">Listar Reservas</p>
-					<select class="form-control" id="listarReserva">
+					<select class="form-control" id="listarReserva" name="listarReserva" onChange="opcoes(this.value)">
 						<option value="todos">Todos</option>
-	        			<option value="Nome">Nome</option>
+	        			<option value="nome">Nome</option>
 	        			<option value="cpf">CPF</option>
 	        			<option value="telefone">Telefone</option>
 	      			</select>
@@ -24,6 +40,9 @@
 				
 				</form>
 				<br>	
+			</div>
+			
+			<div id="conteudo" >
 			</div>			
 			
 		</div>
