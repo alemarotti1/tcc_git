@@ -97,7 +97,7 @@
 			$dataFim = ( new DateTime( $fim ) )->format( 'Y-m-d' );
 			$pd= $produto->gerarRelatorio($dataInicio, $dataFim);
 		}
-		
+		//aqui tem q ajeitar ainda
 		else {
 			$dataIni = explode( ' ', $dataInicio );
 			$dataIni = explode( '/', $dataIni[ 0 ] );
