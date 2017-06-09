@@ -20,7 +20,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Lazer-Ferias AND t.id = 1');
  		$ps1->execute();
- 		$lazer_ferias = count($ps1);
+ 		$lazer_ferias = $ps1->rowCount();
  		
  		
  		
@@ -28,7 +28,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Negócios AND t.id = 1 ');
  		$ps2->execute();
- 		$negocios = count($ps2);
+ 		$negocios = $ps2->rowCount();
  		
  		
  		
@@ -36,7 +36,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Congreço-Feira AND t.id = 1');
  		$ps3->execute();
- 		$congreco_feira = count($ps3);
+ 		$congreco_feira = $ps3->rowCount();
  		
  		
  		
@@ -44,7 +44,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Parentes-Amigos AND t.id = 1');
  		$ps4->execute();
- 		$parentes_amigos = count($ps4);
+ 		$parentes_amigos = $ps4->rowCount();
  		
  		
  		
@@ -52,7 +52,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Estudo-Curso AND t.id = 1');
  		$ps5->execute();
- 		$estudo_curso = count($ps5);
+ 		$estudo_curso = $ps5->rowCount();
  		
  		
  		
@@ -60,7 +60,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Religião AND t.id = 1');
  		$ps6->execute();
- 		$religiao = count($ps6);
+ 		$religiao = $ps6->rowCount();
  		
  		
  		
@@ -68,7 +68,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Saude AND t.id = 1');
  		$ps7->execute();
- 		$saude = count($ps7);
+ 		$saude = $ps7->rowCount();
  		
  		
  		
@@ -76,7 +76,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Compras AND t.id = 1');
  		$ps8->execute();
- 		$compras = count($ps8);
+ 		$compras = $ps8->rowCount();
  		
  		
  		
@@ -84,7 +84,7 @@
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
 							WHERE h.motivo_da_viagem = Outros AND t.id = 1');
  		$ps9->execute();
- 		$outros = count($ps9);
+ 		$outros =$ps9->rowCount();
  		
  	if($lazer_ferias>$negocios && $lazer_ferias > $congreco_feira){
  		$op1=lazer_ferias;
@@ -137,9 +137,9 @@
  		
  		$pd1 = $this->pdo->prepare('SELECT h.id
 							FROM hospedagem h INNERJOIN quarto q ON h.id_quarto = q.id INNERJOIN tipo_quarto t ON q.id_tipo_quarto = t.id
-							WHERE h.motivo_da_viagem = Negócios AND t.id = 3 ');
+							WHERE h.motivo_da_viagem LIKE Negócios AND t.id = 3 ');
  		$pd1->execute();
- 		$lazer_ferias = count($pd1);
+ 		$lazer_ferias = $pd1->rowCount();
  		
  		
  		

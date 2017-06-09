@@ -97,27 +97,16 @@
 			$dataFim = ( new DateTime( $fim ) )->format( 'Y-m-d' );
 			$pd= $produto->gerarRelatorio($dataInicio, $dataFim);
 		}
-		//aqui tem q ajeitar ainda
 		else {
-			$dataIni = explode( ' ', $dataInicio );
-			$dataIni = explode( '/', $dataIni[ 0 ] );
-			$horaIni = $dataIni[1];
-			$dataIni = $dataIni[ 2 ] . '/' . $dataIni[ 1 ] . '/' . $dataIni[ 0 ];
 				
-			$fim = explode( ' ', $dataFim );
-			$fim = explode( '/', $fim[ 0 ] );
-			$fim = $fim[ 2 ] . '/' . $fim[ 1 ] . '/' . $fim[ 0 ] ;
-				
-			$dataInicio = ( new DateTime( $dataIni ) )->format( 'Y-m-d' );
-			$dataFim = ( new DateTime( $fim ) )->format( 'Y-m-d' );
-			
-			
-		
+			$dataI =  ( new DateTime( $dataInicio ) )->format( 'Y-m-d H:i:s' );			
+			$dataF = ( new DateTime( $dataFim ) )->format( 'Y-m-d H:i:s' );
+					
 			if($tipoRelatorio == 'relatorioOcupacao'){
-				$pd = $ocupacao->gerarRelatorio($dataInicio, $dataFim);
+				$pd = $ocupacao->gerarRelatorio($dataI, $dataF);
 			}
 			else if($tipoRelatorio == 'relatorioPerfil'){
-				$pd = $perfil->gerarRelatorio($dataInicio, $dataFim);
+				$pd = $perfil->gerarRelatorio($dataI, $dataF);
 			}
 		}
 	}

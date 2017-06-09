@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once'classes/gerarRelatorio.php';
 	class RelatorioDeOcupacao implements GerarRelatorio{	
 		
@@ -16,24 +16,27 @@
 		$ps = $pdo->prepare('SELECT id 	FROM quarto WHERE 1');
 		$ps->execute();
 		
-		$totalQuartos = count($ps);
+		$totalQuartos = $ps->rowCount();
+		
 		$estado = 'ocupado';
 		
 		
 		
 		$ps1 = $pdo->prepare('SELECT h.id
-						FROM hospedagem h 
-						LEFT JOIN quarto q 
-						ON q.id = h.id_quarto 
-						WHERE q.estado = ?, h.data_entrada >= ? AND h.data_saida <= ? ');
+							FROM hospedagem h 
+							LEFT JOIN quarto q 
+							ON h.id_quarto = q.id   
+							WHERE q.estado LIKE ? AND h.data_entrada >= ? AND h.data_saida <= ? ');
 		$ps1->execute(array($estado,$dataInicio, $dataFim));
 		
-		$quartosOcupados = count($ps1) ;
+		$quartosOcupados = $ps1->rowCount() ;
+	
 		
 		$ocupacao = ($quartosOcupados * 100) / $totalQuartos;
 		
 		
-
+		$dataI =  ( new DateTime( $dataInicio ) )->format( 'd/m/Y H:i:s' );
+		$dataF = ( new DateTime( $dataFim ) )->format( 'd/m/Y H:i:s' );
 
 		echo" <table border=2>";
 		
@@ -44,7 +47,7 @@
 		
 		
 		echo'<tr>',
-		'<td>',$dataInicio, '�', $dataFim,'</td>',
+		'<td>',$dataI , ' á ', $dataF,'</td>',
 		'<td>',$ocupacao,'%','</td>',
 		'</tr>'	;
 		
